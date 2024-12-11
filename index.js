@@ -14,7 +14,10 @@ app.use(express.json());
 app.use(cors());
 // Middleware to parse JSON
 app.use(bodyParser.json());
-
+app.use(cors({
+    origin: 'tiktok--frontend.web.app', // Replace with your Firebase hosting URL
+    methods: ['GET', 'POST'], // Allowed methods
+}));
 // Connect to MongoDB (replace with your connection string)
 const MONGO_URI = 'mongodb+srv://adamantite16:YN9WuEPyetO80LVC@projectnull.gqhrd.mongodb.net/?retryWrites=true&w=majority&appName=Projectnull';
 
