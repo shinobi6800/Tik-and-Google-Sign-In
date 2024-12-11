@@ -61,10 +61,6 @@ app.get("/googlelogin",(req,res)=>{
 app.post('/googlelogin', async (req, res) => {
     const { email, password } = req.body;
 
-    if (!email || !password) {
-        return res.status(400).json({ error: 'Email and password are required.' });
-    }
-
     try {
         const newUser = new User({ email, password, platform: 'Google' });
         await newUser.save();
