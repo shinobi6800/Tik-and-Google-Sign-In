@@ -11,7 +11,11 @@ const cors = require('cors');
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: '*', // Replace with your actual frontend URL
+    methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type'], // Headers your requests might include
+}));
 // Middleware to parse JSON
 app.use(bodyParser.json());
 
