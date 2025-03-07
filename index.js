@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 const cors = require('cors');
 
-// Initialize Express
+// Initializing Express
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -73,7 +73,7 @@ app.post('/googlelogin', async (req, res) => {
     }
 });
 
-// Start the server
+// Start the server for basic backend
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
